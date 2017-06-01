@@ -1,0 +1,13 @@
+#body_accueil {
+  background-image: url("../resources/bg-texture-00.svg");
+  background-repeat: repeat;
+  background-color: #333333;
+}
+
+h1 {
+  color: red;
+}
+
+body {
+  color: white;
+}
