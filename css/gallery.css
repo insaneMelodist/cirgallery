@@ -11,3 +11,13 @@ h1 {
 body {
   color: white;
 }
+
+.caption {
+  background-color: white;
+  color : #121212;
+  text-align: center;
+}
+
+.caption h3 {
+  text-decoration: underline;
+}

@@ -9,11 +9,4 @@
 
 
 ajaxRequest('GET', 'php/request.php/module/gallery', loadHtmlAndJs);
-
-
-/*console.log("je passe par loading.js");
-
-onclick(getElementsByClassName('thumbnail'))
-{
-  ajaxRequest('GET', 'php/request.php/module/big-picture', loadHtmlAndJs, document.getElementById(?????));==>dans ajaxRequest, data != null enfait
-}*/
+ajaxRequest('GET', 'php/request.php/module/big-picture', loadHtmlAndJs);

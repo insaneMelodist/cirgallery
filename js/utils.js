@@ -9,10 +9,10 @@ function ajaxRequest(type, request, callback, data = null)
   {
     request += '?' + data;
   }
-  else if (type == 'PUT')
+  /*else if (type == 'PUT')
   {
     request += '?' + data;
-  }
+  }*/
 
   xhr.open(type, request, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -23,7 +23,6 @@ function ajaxRequest(type, request, callback, data = null)
     {
       return;
     }
-    console.log("je passe dans ajaxRequest (bawi)");
     switch (xhr.status)
     {
       case 200:
@@ -41,9 +40,6 @@ function ajaxRequest(type, request, callback, data = null)
 function loadHtmlAndJs(ajaxResponse)
 {
   var data;
-  //var divBigPicture = document.getElementById("big-picture");
-
-  console.log("puis dans loadHtmlAndJs");
   console.log(ajaxResponse);
 
   data = JSON.parse(ajaxResponse);
