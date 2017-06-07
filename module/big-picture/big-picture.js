@@ -1,4 +1,4 @@
-
+ajaxRequest('GET', 'php/request.php/module/comments', loadHtmlAndJs);
 /*on a deja preload le htmlandjs dans loading!!
 il ne nous reste qu'à faire la requete avec la donnée*/
 
@@ -26,5 +26,5 @@ function loadBigPicture(ajaxResponse)
 
   title.innerHTML = data[0]['TITRE'];
   divimg.innerHTML = bp_img;
-  ajaxRequest('GET', 'php/request.php/module/comments', loadHtmlAndJs);
+  ajaxRequest('GET', 'php/request.php/comments/' + data[0]["ID_PHOTO"], loadComments);
 }

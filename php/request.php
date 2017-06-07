@@ -45,6 +45,12 @@ require_once ('database.php');
 			$data = dbRequestPicture($db, $id);
 		}
 
+		if ($request[0] == 'comments')
+		{
+			$id = $request[1];
+			$data = dbRequestComms($db, $id);
+		}
+
 		if ($data != NULL)
 		{
 			sendJsonData($data);
@@ -135,5 +141,24 @@ require_once ('database.php');
   	return $result;
 	}
 
+	//----------------------------------------------------------------------------
+	//--- dbRequestComms ---------------------------------------------------------
+	//----------------------------------------------------------------------------
+	function dbRequestComms($db, $id)
+	{
+		try
+  	{
+    	$request = "select * from COMMENTAIRE where ID_PHOTO=".$id;
+    	$statement = $db->prepare($request);
+
+    	$statement->execute();
+    	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  	}
+  	catch (PDOException $exception)
+  	{
+    	return false;
+  	}
+  	return $result;
+	}
 
  ?>
