@@ -53,7 +53,7 @@ require_once ('database.php');
 			}
 			if($requestType=='PUT'){
 				$id = $request[1];
-				dbInsertComms($db, $id, $comm);
+				dbInsertComms($db, $id, $_GET['comm']);
 			}
 		}
 
