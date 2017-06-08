@@ -17,3 +17,13 @@ function loadComments(ajaxResponse)
     comments_zone.innerHTML += comment_content;
   }
 }
+
+function addComm(){
+
+  var comm = document.getElementById('comm').value;
+  document.getElementById('comm').value='';
+  if (comm!='') {
+    console.log(comm);
+  }
+  ajaxRequest("PUT", "php/request.php/comments/1", loadComments, "comm="+comm);
+}
