@@ -47,8 +47,14 @@ require_once ('database.php');
 
 		if ($request[0] == 'comments')
 		{
-			$id = $request[1];
-			$data = dbRequestComms($db, $id);
+			if($requestType=='GET'){
+				$id = $request[1];
+				$data = dbRequestComms($db, $id);
+			}
+			if($requestType=='PUT'){
+				$id = $request[1];
+				dbInsertComms($db, $id, $comm);
+			}
 		}
 
 		if ($data != NULL)
@@ -150,6 +156,25 @@ require_once ('database.php');
   	{
     	$request = "select * from COMMENTAIRE where ID_PHOTO=".$id;
     	$statement = $db->prepare($request);
+
+    	$statement->execute();
+    	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  	}
+  	catch (PDOException $exception)
+  	{
+    	return false;
+  	}
+  	return $result;
+	}
+
+        function dbInsertComms($db, $id, $comm)
+	{
+		try
+  	{
+    	$request = "insert into COMMENTAIRE (ID_PHOTO, TEXTE) values(:id,:comm)";
+    	$statement = $db->prepare($request);
+    	$statement->bindParam(":id",$id,PDO::PARAM_INT);
+    	$statement->bindParam(":text",$comm,PDO::PARAM_INT);
 
     	$statement->execute();
     	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
